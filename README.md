@@ -1,5 +1,6 @@
     
 **XAMPP/ZIP FILE INSTALLATION:**
+
 You need to download XAMPP with Apache and MYSQL services both online, then head to your local directory, example:
 C:\xampp\htdocs\
 And you'll unpack the zip file there, named crud (note that everything in this program is case sensitive, so make sure not to make too many changes)
@@ -40,6 +41,7 @@ It leads to both edit_user.php and delete_user.php, which do both their tasks ac
 
 
 **General security overview:**
+
 -User input is sanitized using filter_var() to prevent XSS attacks.
 -Passwords are hashed using password_hash() before storing them in the database, and when a user logs in, their input is hashed and compared with the database.
 -Prepared statements separate the SQL code from the data, preventing the database from interpreting user input as SQL commands. This makes it impossible for attackers to inject malicious SQL code into the query.
