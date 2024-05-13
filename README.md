@@ -1,11 +1,5 @@
--User input is sanitized using filter_var() to prevent XSS attacks.
--Passwords are hashed using password_hash() before storing them in the database, and when a user logs in, their input is hashed and compared with the database.
--Prepared statements separate the SQL code from the data, preventing the database from interpreting user input as SQL commands. This makes it impossible for attackers to inject malicious SQL code into the query.
--Error messages are logged instead of being displayed to the user for security reasons. 
--Audits are created to read through when users logged in, and when they interact with the system in any way, this includes operations to show what was deleted by who and etc.
--Sessions are made to prevent users from entering into the system via url without having login permissions. This also helps us track each user and what they are doing in the system.
     
-XAMPP/ZIP FILE INSTALLATION:
+**XAMPP/ZIP FILE INSTALLATION:**
 You need to download XAMPP with Apache and MYSQL services both online, then head to your local directory, example:
 C:\xampp\htdocs\
 And you'll unpack the zip file there, named crud (note that everything in this program is case sensitive, so make sure not to make too many changes)
@@ -21,7 +15,7 @@ Password	varchar(255)
 
 Navigation of the program should be simple, you have your own database to test, attempt creation, deletion, editing, logging in and out of different users, etc.
 
-As for the code, here is a quick rundown of every file and its task:
+**As for the code, here is a quick rundown of every file and its task:**
 
 connect.php is our way of connecting php to MYSQL, if you want to test if the website connects correctly, uncomment the echo and it should show in the login page
 
@@ -43,3 +37,12 @@ If a matching user is found, it verifies the password using password_verify.
 Display.php is the heart of this operation, has all the users and their data aside from their passwords for security reasons.
 It uses session authentication to not allow anyone but logged in users to access it. You can delete and edit the users that were registered in the SQL database.
 It leads to both edit_user.php and delete_user.php, which do both their tasks accordingly, following the same access control of display.php, and the user who performs these actions will be logged, and what they've changed will be logged aswell.
+
+
+**General security overview:**
+-User input is sanitized using filter_var() to prevent XSS attacks.
+-Passwords are hashed using password_hash() before storing them in the database, and when a user logs in, their input is hashed and compared with the database.
+-Prepared statements separate the SQL code from the data, preventing the database from interpreting user input as SQL commands. This makes it impossible for attackers to inject malicious SQL code into the query.
+-Error messages are logged instead of being displayed to the user for security reasons. 
+-Audits are created to read through when users logged in, and when they interact with the system in any way, this includes operations to show what was deleted by who and etc.
+-Sessions are made to prevent users from entering into the system via url without having login permissions. This also helps us track each user and what they are doing in the system.
